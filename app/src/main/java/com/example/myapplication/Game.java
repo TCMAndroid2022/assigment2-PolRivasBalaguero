@@ -29,6 +29,7 @@ public class Game extends AppCompatActivity {
     char[] tusRespuestas;
     Button intentar,resolver;
     EditText lletra;
+    int puntuacio=0, lletresintroducides=0;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -50,6 +51,7 @@ public class Game extends AppCompatActivity {
         intentar.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
                 String resp= String.valueOf(lletra.getText());
                 for(int i = 0; i < paraula.length; i++){
                     if(paraula[i]== resp.charAt(0)){
@@ -57,7 +59,7 @@ public class Game extends AppCompatActivity {
                     }
                 }
 
-
+                lletresintroducides++;
 
                 mostrarparaula();
 
@@ -72,11 +74,16 @@ public class Game extends AppCompatActivity {
         resolver.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+
+
+                puntuacio=((paraulacompleta.length() - lletresintroducides) / (paraulacompleta.length())) * 10;
+
                 String resp= String.valueOf(lletra.getText());
                 Intent intent= new Intent(Game.this, Result.class);
 
                  intent.putExtra("paraula",paraulacompleta);
                  intent.putExtra("resposta",resp);
+                intent.putExtra("puntuacio",puntuacio);
 
                 startActivity(intent);
 

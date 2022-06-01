@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultat"
-        app:layout_constraintVertical_bias="0.491" />
+        app:layout_constraintVertical_bias="0.872" />
 
     <TextView
         android:id="@+id/paraulares"
@@ -39,5 +39,30 @@
         app:layout_constraintBottom_toTopOf="@+id/tornar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultat" />
+        app:layout_constraintTop_toBottomOf="@+id/resultat"
+        app:layout_constraintVertical_bias="0.186" />
+
+    <TextView
+        android:id="@+id/puntuacion"
+        android:layout_width="80dp"
+        android:layout_height="39dp"
+        android:text="Puntuacio: "
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/tornar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paraulares"
+        app:layout_constraintVertical_bias="0.873" />
+
+    <TextView
+        android:id="@+id/respostausuari"
+        android:layout_width="93dp"
+        android:layout_height="45dp"
+        android:text="respostaUser"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/puntuacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paraulares" />
 </androidx.constraintlayout.widget.ConstraintLayout>
