@@ -21,18 +21,17 @@
         android:layout_height="wrap_content"
         android:text="User" />
 
+    <Button
+        android:id="@+id/jugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jugar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collection_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="401dp" />
 
-    <include layout="@layout/toolbar" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 </LinearLayout>
 
 

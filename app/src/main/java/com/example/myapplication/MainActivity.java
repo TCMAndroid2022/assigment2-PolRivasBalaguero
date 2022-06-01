@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,25 +22,22 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.util.List;
-
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.TransformerException;
 
 public class MainActivity extends AppCompatActivity {
         private EditText UserText;
         private Button addButton;
         private RecyclerView collectionView;
         private UserAdapter UserAdapter;
+        Button jugar;
         UserViewModel viewModel;
         TextView textView;
+        String paraula;
         RequestQueue queue;
         String URL = "https://random-word-api.herokuapp.com/word";
-        char paraula[]= new char[100];
 
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
@@ -49,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             UserText = findViewById(R.id.User_name);
             addButton = findViewById(R.id.add_button);
 
-            queue = Volley.newRequestQueue(this);
 
            collectionView = findViewById(R.id.collection_view);
 
@@ -84,11 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            queue = Volley.newRequestQueue(this);
 
             StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    GuardarParaula(response.toString());
+                    paraula=response.toString();
                     Toast.makeText(MainActivity.this,response.toString(),Toast.LENGTH_LONG).show();
                 }
             }, new Response.ErrorListener() {
@@ -99,16 +97,18 @@ public class MainActivity extends AppCompatActivity {
             });
             queue.add(request);
 
+            jugar = findViewById(R.id.jugar);
 
-        }
+            jugar.setOnClickListener(new View.OnClickListener() {
 
-        private void GuardarParaula(String obtingut)
-        {
-            for (int x=0; x<obtingut.length();x++)
-                if(obtingut.charAt(x)!='[' && obtingut.charAt(x)!='"'){
-                    paraula[x]= obtingut.charAt(x);
+                public void onClick(View v) {
+                    Intent intent= new Intent(MainActivity.this, Game.class);
+                    intent.putExtra("paraula",paraula);
+                    startActivity(intent);
                 }
+            });
         }
+
 
         @Override
         protected void onDestroy() {
