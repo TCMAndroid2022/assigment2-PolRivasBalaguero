@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Unii/Nueva carpeta/assigment2-PolRivasBalaguero/app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
+        <entry key="..\:/Unii/Nueva carpeta/assigment2-PolRivasBalaguero/app/src/main/res/layout/collection_item.xml" value="0.2128623188405797" />
+        <entry key="..\:/Unii/Nueva carpeta/assigment2-PolRivasBalaguero/app/src/main/res/layout/scores.xml" value="0.2128623188405797" />
+        <entry key="..\:/Unii/Nueva carpeta/assigment2-PolRivasBalaguero/app/src/main/res/layout/toolbar.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.249" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.249" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24322916666666666" />

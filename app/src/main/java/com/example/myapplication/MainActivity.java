@@ -1,10 +1,15 @@
 package com.example.myapplication;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,7 +17,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.List;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.TransformerException;
 
 public class MainActivity extends AppCompatActivity {
         private EditText UserText;
@@ -20,15 +36,22 @@ public class MainActivity extends AppCompatActivity {
         private RecyclerView collectionView;
         private UserAdapter UserAdapter;
         UserViewModel viewModel;
+        TextView textView;
+        RequestQueue queue;
+        String URL = "https://random-word-api.herokuapp.com/word";
+        char paraula[]= new char[100];
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-
             UserText = findViewById(R.id.User_name);
             addButton = findViewById(R.id.add_button);
-            collectionView = findViewById(R.id.collection_view);
+
+            queue = Volley.newRequestQueue(this);
+
+           collectionView = findViewById(R.id.collection_view);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             collectionView.setLayoutManager(layoutManager);
@@ -60,6 +83,31 @@ public class MainActivity extends AppCompatActivity {
                     UserText.setText("");
                 }
             });
+
+
+            StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    GuardarParaula(response.toString());
+                    Toast.makeText(MainActivity.this,response.toString(),Toast.LENGTH_LONG).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("error",error.toString());
+                }
+            });
+            queue.add(request);
+
+
+        }
+
+        private void GuardarParaula(String obtingut)
+        {
+            for (int x=0; x<obtingut.length();x++)
+                if(obtingut.charAt(x)!='[' && obtingut.charAt(x)!='"'){
+                    paraula[x]= obtingut.charAt(x);
+                }
         }
 
         @Override
