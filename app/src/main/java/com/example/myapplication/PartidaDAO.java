@@ -13,7 +13,8 @@ public interface PartidaDAO {
     LiveData<List<Partida>> getAll();
     @Query("SELECT POINTS FROM Partida WHERE username LIKE :username")
     String getPoints(String username);
-
+    @Query("SELECT MAX(POINTS)FROM PARTIDA WHERE username IS :username")
+    String getMaxPoints(String username);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertPartida(Partida element);
 }
