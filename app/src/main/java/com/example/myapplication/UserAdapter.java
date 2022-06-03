@@ -8,13 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private List<User> data = Collections.emptyList();
+    ArrayList<User> userList;
 
-    public UserAdapter() {
+    public UserAdapter(ArrayList userList) {
+        this.userList=userList;
     }
 
     public void setUsers(List<User> data) {

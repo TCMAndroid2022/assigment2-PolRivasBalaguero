@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,20 +27,23 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
         private EditText UserText;
         private Button addButton;
-        private RecyclerView collectionView;
+        private RecyclerView recyclerUsers;
         private UserAdapter UserAdapter;
-        Button jugar;
+        ArrayList<User> listaUsers= new ArrayList<User>();
+         Button jugar;
         UserViewModel viewModel;
         TextView textView;
         String paraula;
         RequestQueue queue;
         String URL = "https://random-word-api.herokuapp.com/word";
-
+        RecyclerView.LayoutManager linear_layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager grid_layoutManager = new GridLayoutManager(this, 2);
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
             addButton = findViewById(R.id.add_button);
 
 
-           collectionView = findViewById(R.id.collection_view);
+           recyclerUsers = findViewById(R.id.collection_view);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-            collectionView.setLayoutManager(layoutManager);
+            recyclerUsers.setLayoutManager(layoutManager);
 
             //crea instancia del ViewModel per accedir a les dades del llistat.
             //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
             UserAdapter = new UserAdapter();
-            collectionView.setAdapter(UserAdapter);
+            recyclerUsers.setAdapter(UserAdapter);
 
 
             addButton.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +114,18 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            recyclerUsers.setLayoutManager(linear_layoutManager);
+        }
+        else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            recyclerUsers.setLayoutManager(grid_layoutManager);
+        }
+    }
         @Override
         protected void onDestroy() {
             AppDatabase.destroyInstance();

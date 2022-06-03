@@ -32,6 +32,11 @@
             android:name=".Result"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".Users_Info"
+            android:exported="false">
+        </activity>
+
 
     </application>
 
