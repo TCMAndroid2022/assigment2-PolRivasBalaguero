@@ -37,7 +37,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User currentUser = data.get(position);
         holder.id.setText(currentUser.id + "");
-        holder.task.setText(currentUser.task);
+        holder.task.setText(currentUser.name);
     }
 
     @Override

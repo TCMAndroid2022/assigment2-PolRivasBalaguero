@@ -1,37 +1,24 @@
 package com.example.myapplication;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Partida {
-    private String id;
-    private int points;
-    private String user;
 
-    public Partida(String id, int points, String user) {
-        this.id = id;
-        this.points = points;
-        this.user = user;
+    public Partida() {
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    @PrimaryKey(autoGenerate = true)
+    public int id;
 
-    public int getPoints() {
-        return points;
-    }
+    @ColumnInfo(name = "username")
+    public String user;
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
+    @ColumnInfo(name = "points")
+    public String points;
 
-    public String getUser() {
-        return user;
-    }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 }

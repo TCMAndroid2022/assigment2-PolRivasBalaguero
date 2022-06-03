@@ -25,9 +25,9 @@ public class DatabaseController {
         return allUsers;
     }
 
-    public void setUser(String task) {
+    public void setUser(String name) {
         User current = new User();
-        current.task = task;
+        current.name = name;
         new insertAsyncTask(Userdao).execute(current);
     }
 

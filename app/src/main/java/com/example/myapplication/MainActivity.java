@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<User> listaUsers= new ArrayList<User>();
          Button jugar;
         UserViewModel viewModel;
-        TextView textView;
         String paraula;
         RequestQueue queue;
         String URL = "https://random-word-api.herokuapp.com/word";
@@ -52,11 +51,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
             UserText = findViewById(R.id.User_name);
             addButton = findViewById(R.id.add_button);
-
-
-           recyclerUsers = findViewById(R.id.collection_view);
+            recyclerUsers = findViewById(R.id.collection_view);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerUsers.setLayoutManager(layoutManager);
@@ -76,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            UserAdapter = new UserAdapter();
+           // UserAdapter = new UserAdapter();
             recyclerUsers.setAdapter(UserAdapter);
 
 
@@ -105,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             });
             queue.add(request);
 
-            jugar = findViewById(R.id.jugar);
+          /*  jugar = findViewById(R.id.jugar);
 
             jugar.setOnClickListener(new View.OnClickListener() {
 
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("paraula",paraula);
                     startActivity(intent);
                 }
-            });
+            });*/
         }
 
     @Override
@@ -135,13 +133,13 @@ public class MainActivity extends AppCompatActivity {
             super.onDestroy();
         }
 
-        @Override
+      /*  @Override
         public boolean onCreateOptionsMenu(Menu menu){
             getMenuInflater().inflate(R.menu.menu,menu);
             return true;
-        }
+        }*/
 
-        @Override
+      /*  @Override
         public boolean onOptionsItemSelected(@NonNull MenuItem item){
             switch (item.getItemId()) {
                 case R.id.uno:
@@ -150,5 +148,5 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             return true;
-        }
+        }*/
     }
