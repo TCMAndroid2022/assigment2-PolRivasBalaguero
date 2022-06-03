@@ -14,11 +14,14 @@ import java.util.concurrent.Executors;
 public class DatabaseController {
     private UserDao Userdao;
     private LiveData<List<User>> allUsers;
+    private  PartidaDAO partidaDAO;
+    private LiveData<List<Partida>>;
 
     public DatabaseController(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         Userdao = db.Userdao();
         allUsers = Userdao.getAll();
+        
     }
 
     public LiveData<List<User>> fetchAll() {
