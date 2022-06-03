@@ -39,6 +39,7 @@ public class Result extends AppCompatActivity {
         else{
             TVresultat.setText("INCORRECTE! \uD83D\uDE25\u200B ");
             TVrespostauser.setTextColor(Color.parseColor("#FF0000"));
+            puntacio=0;
 
         }
 

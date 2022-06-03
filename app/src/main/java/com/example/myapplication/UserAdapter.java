@@ -16,8 +16,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private List<User> data = Collections.emptyList();
     ArrayList<User> userList;
 
-    public UserAdapter(ArrayList userList) {
-        this.userList=userList;
+    public UserAdapter() {
     }
 
     public void setUsers(List<User> data) {

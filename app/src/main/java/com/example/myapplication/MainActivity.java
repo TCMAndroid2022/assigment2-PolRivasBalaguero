@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerUsers.setLayoutManager(layoutManager);
+            UserAdapter = new UserAdapter();
 
             //crea instancia del ViewModel per accedir a les dades del llistat.
             //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
@@ -74,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-           // UserAdapter = new UserAdapter();
             recyclerUsers.setAdapter(UserAdapter);
 
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             });
             queue.add(request);
 
-          /*  jugar = findViewById(R.id.jugar);
+            jugar = findViewById(R.id.jugar);
 
             jugar.setOnClickListener(new View.OnClickListener() {
 
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("paraula",paraula);
                     startActivity(intent);
                 }
-            });*/
+            });
         }
 
     @Override
@@ -133,13 +133,13 @@ public class MainActivity extends AppCompatActivity {
             super.onDestroy();
         }
 
-      /*  @Override
+       @Override
         public boolean onCreateOptionsMenu(Menu menu){
             getMenuInflater().inflate(R.menu.menu,menu);
             return true;
-        }*/
+        }
 
-      /*  @Override
+       @Override
         public boolean onOptionsItemSelected(@NonNull MenuItem item){
             switch (item.getItemId()) {
                 case R.id.uno:
@@ -148,5 +148,5 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             return true;
-        }*/
+        }
     }
