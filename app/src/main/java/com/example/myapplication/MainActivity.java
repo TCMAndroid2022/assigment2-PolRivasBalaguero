@@ -5,12 +5,15 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -130,5 +133,22 @@ public class MainActivity extends AppCompatActivity {
         protected void onDestroy() {
             AppDatabase.destroyInstance();
             super.onDestroy();
+        }
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu){
+            getMenuInflater().inflate(R.menu.menu,menu);
+            return true;
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(@NonNull MenuItem item){
+            switch (item.getItemId()) {
+                case R.id.uno:
+                    Intent intent = new Intent(MainActivity.this, Game.class);// <---------------- Poner la actividad de los resultados
+                    startActivity(intent);
+                    break;
+            }
+            return true;
         }
     }

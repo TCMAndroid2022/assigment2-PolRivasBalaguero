@@ -34,4 +34,14 @@ public class User {
 
     @ColumnInfo(name = "task")
     public String task;
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(){
+        this.name=name;
+    }
+
+
 }
