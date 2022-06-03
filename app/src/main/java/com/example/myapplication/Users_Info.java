@@ -20,13 +20,13 @@ public class Users_Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users_info);
-
+/*
             listUsers= (ArrayList<User>) getIntent().getSerializableExtra("newUser");
             adapter = new UserAdapter(listUsers);
             recyclerUser = (RecyclerView) findViewById(R.id.RecyclerId);
             recyclerUser.setLayoutManager(new LinearLayoutManager(this));
             adapter.notifyDataSetChanged();
-            recyclerUser.setAdapter(adapter);
+            recyclerUser.setAdapter(adapter);*/
 
     }
 }

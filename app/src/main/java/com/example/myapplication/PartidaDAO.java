@@ -15,5 +15,5 @@ public interface PartidaDAO {
     String getPoints(String username);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertPartida(User element);
+    void insertPartida(Partida element);
 }
