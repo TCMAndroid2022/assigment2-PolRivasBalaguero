@@ -14,6 +14,6 @@ public interface UserDao {
     LiveData<List<User>> getAll();
     //OnConflictStrategy s'ulitza en cas de que la PK ja existeix.
     //No es necesari.
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     void insertUser(User element);
 }
