@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onOptionsItemSelected(@NonNull MenuItem item){
             switch (item.getItemId()) {
                 case R.id.uno:
-                    Intent intent = new Intent(MainActivity.this, Game.class);// <---------------- Poner la actividad de los resultados
+                    Intent intent = new Intent(MainActivity.this, TopScores.class);//
                     startActivity(intent);
                     break;
             }

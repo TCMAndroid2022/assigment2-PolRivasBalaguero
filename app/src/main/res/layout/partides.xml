@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="366dp"
-            android:layout_height="wrap_content"
+            android:layout_height="168dp"
             android:layout_marginLeft="20dp"
             android:orientation="vertical">
 
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Partida Numero"
+                android:text="Nombre Apellido"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -31,10 +31,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="POINTS"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
     </LinearLayout>

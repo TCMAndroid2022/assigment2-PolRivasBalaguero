@@ -29,6 +29,10 @@
             android:exported="false">
         </activity>
         <activity
+            android:name=".TopScores"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".Result"
             android:exported="false">
         </activity>
