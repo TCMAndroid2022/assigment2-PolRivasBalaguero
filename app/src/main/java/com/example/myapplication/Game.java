@@ -54,7 +54,7 @@ public class Game extends AppCompatActivity {
 
                 String resp= String.valueOf(lletra.getText());
                 for(int i = 0; i < paraula.length; i++){
-                    if(paraula[i]== resp.charAt(0)){
+                    if(Character.toUpperCase(paraula[i]) == Character.toUpperCase(resp.charAt(0))){
                         tusRespuestas[i] = paraula[i];
                     }
                 }

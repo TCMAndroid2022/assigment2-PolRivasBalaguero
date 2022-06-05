@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class Result extends AppCompatActivity {
 
     String resultat,resposta;
@@ -31,7 +33,7 @@ public class Result extends AppCompatActivity {
         TVrespostauser=findViewById(R.id.respostausuari);
 
         respostacorrecta.setText(resultat);
-        if (resposta.equals(resultat)){
+        if (resposta.toUpperCase().equals(resultat.toUpperCase())){
             TVresultat.setText("CORRECTE! \uD83E\uDD20\u200B\u200B ");
             TVrespostauser.setTextColor(Color.parseColor("#00FF00"));
         }

@@ -48,15 +48,19 @@
 
     <TextView
         android:id="@+id/tapada"
-        android:layout_width="211dp"
-        android:layout_height="96dp"
+        android:layout_width="323dp"
+        android:layout_height="76dp"
         android:ellipsize="middle"
+        android:gravity="center"
         android:text="Paraula"
-        app:autoSizeTextType="uniform"
+        android:textSize="34sp"
+        app:autoSizeTextType="none"
         app:layout_constraintBottom_toTopOf="@+id/intentar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <EditText
         android:id="@+id/lletra"
