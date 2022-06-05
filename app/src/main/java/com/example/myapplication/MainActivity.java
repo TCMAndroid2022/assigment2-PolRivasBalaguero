@@ -149,10 +149,6 @@ public class MainActivity extends AppCompatActivity {
                      intent = new Intent(MainActivity.this, TopScores.class);
                     startActivity(intent);
                     break;
-                case R.id.dos:
-                     intent = new Intent(MainActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    break;
             }
             return true;
         }

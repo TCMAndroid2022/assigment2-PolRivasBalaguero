@@ -81,10 +81,7 @@ public class TopScores  extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.uno:
-                intent = new Intent(TopScores.this, TopScores.class);
-                startActivity(intent);
-                break;
+
             case R.id.dos:
                 intent = new Intent(TopScores.this, MainActivity.class);
                 startActivity(intent);
