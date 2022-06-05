@@ -29,6 +29,9 @@ public class DatabaseController {
     public LiveData<List<User>> fetchAll() {
         return allUsers;
     }
+    public LiveData<List<Partida>> fetch() {
+        return allPartidas;
+    }
 
     public void setUser(String name) {
 
