@@ -30,29 +30,32 @@ public class TopScores  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.topscores);
-        TopUserAdapter = new TopUsersAdapters();
         recyclerPartidas = findViewById(R.id.recyclertopsers);
         recyclerPartidas.setLayoutManager(layoutManager);
-        recyclerPartidas.setAdapter(TopUserAdapter);
 
 
+        TopUserAdapter = new TopUsersAdapters();
 
         viewModel = new ViewModelProvider(this).get(PartidaViewModel.class);
 
-        partidas=viewModel.getAllPartidas();
-      
 
-        String user,points;
-        for (int x=0;x<partidas.getValue().size();x++){
-           user=  partidas.getValue().get(x).user;
-           points=  partidas.getValue().get(x).user;
+        viewModel.getAllPartidas().observe(this, new Observer<List<Partida>>() {
+            @Override
+            public void onChanged(List<Partida> partidas) {
+                //onChanged s'executa quan el llistat es modifica a la bbdd.
+                //Si afegiu una tasca, veureu que s'executa aquest codi per
+                //actualitzar el llistat (adapter)
 
-        }
+                TopUserAdapter.setPartidas(partidas);
+            }
+        });
 
-        TopUserAdapter.setPartidas(partidas);
 
 
         recyclerPartidas.setAdapter(TopUserAdapter);
+
+
+
 
 
 

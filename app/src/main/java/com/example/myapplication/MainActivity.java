@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     //onChanged s'executa quan el llistat es modifica a la bbdd.
                     //Si afegiu una tasca, veureu que s'executa aquest codi per
                     //actualitzar el llistat (adapter)
+
                     UserAdapter.setUsers(Users);
                 }
             });
