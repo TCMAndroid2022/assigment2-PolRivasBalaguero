@@ -7,5 +7,10 @@
         app:showAsAction="ifRoom"
         android:title="uno"/>
 
+    <item android:id="@+id/dos"
+        android:icon="@drawable/ic_baseline_subdirectory_arrow_left_24"
+        app:showAsAction="ifRoom"
+        android:title="dos"/>
+
 
 </menu>

@@ -14,8 +14,9 @@ import java.util.Locale;
 
 public class Result extends AppCompatActivity {
 
-    String resultat,resposta;
+    String resultat,resposta,username;
     TextView TVresultat, respostacorrecta,puntuacion,TVrespostauser;
+    DatabaseController dbcontroler;
     Button tornar;
     int puntacio;
     @SuppressLint("ResourceAsColor")
@@ -26,7 +27,7 @@ public class Result extends AppCompatActivity {
         resultat=getIntent().getStringExtra("paraula");
         resposta=getIntent().getStringExtra("resposta");
         puntacio=getIntent().getIntExtra("puntuacio",0);
-
+        username=getIntent().getStringExtra("username");// <-----------------GUARDAR EN BBDD
         puntuacion= findViewById(R.id.puntuacion);
         TVresultat= findViewById(R.id.resultat);
         respostacorrecta= findViewById(R.id.paraulares);

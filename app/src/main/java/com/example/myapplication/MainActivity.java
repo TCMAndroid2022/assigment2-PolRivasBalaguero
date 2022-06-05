@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<User> listaUsers= new ArrayList<User>();
          Button jugar;
         UserViewModel viewModel;
-        String paraula;
+        String paraula,username;
         RequestQueue queue;
         String URL = "https://random-word-api.herokuapp.com/word";
         RecyclerView.LayoutManager linear_layoutManager = new LinearLayoutManager(this);
@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //Afegim a través del viewmodel
-                    viewModel.insert(UserText.getText().toString());
+                    username=(UserText.getText().toString());
+                    viewModel.insert(username);
                     UserText.setText("");
                 }
             });
@@ -110,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent= new Intent(MainActivity.this, Game.class);
                     intent.putExtra("paraula",paraula);
+                    intent.putExtra("username",username);
                     startActivity(intent);
                 }
             });
@@ -141,9 +143,14 @@ public class MainActivity extends AppCompatActivity {
 
        @Override
         public boolean onOptionsItemSelected(@NonNull MenuItem item){
+           Intent intent;
             switch (item.getItemId()) {
                 case R.id.uno:
-                    Intent intent = new Intent(MainActivity.this, TopScores.class);//
+                     intent = new Intent(MainActivity.this, TopScores.class);
+                    startActivity(intent);
+                    break;
+                case R.id.dos:
+                     intent = new Intent(MainActivity.this, MainActivity.class);
                     startActivity(intent);
                     break;
             }

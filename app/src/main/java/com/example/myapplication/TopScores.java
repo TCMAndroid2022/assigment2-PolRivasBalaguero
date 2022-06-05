@@ -1,9 +1,13 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -65,5 +69,27 @@ public class TopScores  extends AppCompatActivity {
         {
             recyclerUsers.setLayoutManager(grid_layoutManager);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.uno:
+                intent = new Intent(TopScores.this, TopScores.class);
+                startActivity(intent);
+                break;
+            case R.id.dos:
+                intent = new Intent(TopScores.this, MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 }

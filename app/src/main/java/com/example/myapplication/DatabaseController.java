@@ -14,15 +14,15 @@ import java.util.concurrent.Executors;
 public class DatabaseController {
     private UserDao Userdao;
     private LiveData<List<User>> allUsers;
-  // private  PartidaDAO partidaDAO;
-    //private LiveData<List<Partida>>allPartidas;
+    private  PartidaDAO partidaDAO;
+    private LiveData<List<Partida>>allPartidas;
 
     public DatabaseController(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         Userdao = db.Userdao();
         allUsers = Userdao.getAll();
-       // partidaDAO=db.Partidadao();
-        //allPartidas=partidaDAO.getAll();
+        partidaDAO=db.Partidadao();
+        allPartidas=partidaDAO.getAll();
 
     }
 
@@ -31,9 +31,23 @@ public class DatabaseController {
     }
 
     public void setUser(String name) {
+
         User current = new User();
+
         current.name = name;
-        new insertAsyncTask(Userdao).execute(current);
+        boolean repetit=false;
+        for(int x=0; x<allUsers.getValue().size();x++){
+            if(allUsers.getValue().get(x).name.toUpperCase().equals(name.toUpperCase())) repetit=true;
+        }
+        if (!repetit && !name.equals("")) new insertAsyncTask(Userdao).execute(current);
+    }
+
+    public void setPartida(String username,String points){
+        Partida partida= new Partida();
+        partida.user=username;
+        partida.points=points;
+        new insertAsynTask(partidaDAO).execute(partida);
+
     }
 
     /*private static class insertAsyncTask extends AsyncTask<User, Void, Void> {
@@ -71,4 +85,27 @@ public class DatabaseController {
             });
         }
     }
+
+    private static class insertAsynTask {
+        private PartidaDAO asyncDao;
+        private Executor executor = Executors.newSingleThreadExecutor();
+
+        insertAsynTask(PartidaDAO dao) {
+            asyncDao = dao;
+        }
+
+        public void execute(Partida partida) {
+            this.doInBackground(partida);
+        }
+
+        private void doInBackground(final Partida partida) {
+            this.executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    asyncDao.insertPartida(partida);
+                }
+            });
+        }
+    }
+
 }
