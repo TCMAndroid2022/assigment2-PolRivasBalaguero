@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private List<User> data = Collections.emptyList();
-    ArrayList<User> userList;
+
 
     public UserAdapter() {
     }

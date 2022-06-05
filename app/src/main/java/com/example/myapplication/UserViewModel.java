@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class UserViewModel extends AndroidViewModel {
-        private DatabaseController repository; //Instancia al controller
-        private LiveData<List<User>> allUsers; //LiveData
+        private DatabaseController repository;
+        private LiveData<List<User>> allUsers;
 
         public UserViewModel(@NonNull Application application) {
             super(application);

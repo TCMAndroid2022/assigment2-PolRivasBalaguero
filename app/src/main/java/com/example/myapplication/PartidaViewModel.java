@@ -9,8 +9,8 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
     public class PartidaViewModel extends AndroidViewModel {
-        private DatabaseController repository; //Instancia al controller
-        private LiveData<List<Partida>> allPartidas; //LiveData
+        private DatabaseController repository;
+        private LiveData<List<Partida>> allPartidas;
 
         public PartidaViewModel(@NonNull Application application) {
             super(application);
