@@ -46,9 +46,7 @@ public class DatabaseController {
     }
 
     public void setPartida(String username,String points){
-        Partida partida= new Partida();
-        partida.user=username;
-        partida.points=points;
+        Partida partida= new Partida(username,points);
         new insertAsynTask(partidaDAO).execute(partida);
 
     }

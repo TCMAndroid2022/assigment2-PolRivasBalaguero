@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                     //Afegim a través del viewmodel
                     username=(UserText.getText().toString());
                     viewModel.insert(username);
-                    UserText.setText("");
                 }
             });
 

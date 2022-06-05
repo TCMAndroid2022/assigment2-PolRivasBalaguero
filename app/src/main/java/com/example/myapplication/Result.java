@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Locale;
 
@@ -19,6 +20,7 @@ public class Result extends AppCompatActivity {
     DatabaseController dbcontroler;
     Button tornar;
     int puntacio;
+    PartidaViewModel viewModel;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstance) {
@@ -32,6 +34,7 @@ public class Result extends AppCompatActivity {
         TVresultat= findViewById(R.id.resultat);
         respostacorrecta= findViewById(R.id.paraulares);
         TVrespostauser=findViewById(R.id.respostausuari);
+        viewModel = new ViewModelProvider(this).get(PartidaViewModel.class);
 
         respostacorrecta.setText(resultat);
         if (resposta.toUpperCase().equals(resultat.toUpperCase())){
@@ -47,6 +50,9 @@ public class Result extends AppCompatActivity {
         }
 
         puntuacion.setText("Puntuacio: "+ puntacio);
+
+        viewModel.insert(username,Integer.toString(puntacio));
+
 
         TVrespostauser.setText(resposta);
 

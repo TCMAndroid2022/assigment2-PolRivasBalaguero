@@ -25,6 +25,8 @@ import java.util.List;
         void insert(String name,String points) {
             repository.setPartida(name,points);
         }
+
+
     }
 
 

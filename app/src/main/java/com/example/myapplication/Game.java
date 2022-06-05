@@ -77,6 +77,7 @@ public class Game extends AppCompatActivity {
                  intent.putExtra("paraula",paraulacompleta);
                  intent.putExtra("resposta",resp);
                 intent.putExtra("puntuacio",puntuacio);
+                intent.putExtra("username",username);
 
                 startActivity(intent);
 

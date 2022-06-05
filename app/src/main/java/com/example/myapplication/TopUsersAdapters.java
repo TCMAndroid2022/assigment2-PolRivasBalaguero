@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -14,14 +15,13 @@ import java.util.List;
 
 public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.ViewHolder> {
 
-    private List<Partida> data = Collections.emptyList();
-    private List<Partida> sumatotal = Collections.emptyList();
-    ArrayList<User> userList;
+    private LiveData<List<Partida>> data;
+    private LiveData<List<Partida>> sumatotal;
 
     public TopUsersAdapters() {
     }
 
-    public void setUsers(List<Partida> data) {
+    public void setPartidas(LiveData<List<Partida>> data) {
         this.data = data;
         sumarpuntuacions();
         notifyDataSetChanged();
@@ -37,7 +37,7 @@ public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.View
 
     @Override
     public void onBindViewHolder(@NonNull TopUsersAdapters.ViewHolder holder, int position) {
-        Partida currentPartida = sumatotal.get(position);
+        Partida currentPartida = sumatotal.getValue().get(position);
         holder.user.setText(currentPartida.user + "");
         holder.points.setText(currentPartida.points + "");
 
@@ -46,22 +46,24 @@ public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.View
     @Override
     public int getItemCount() {
         if (data == null) return 0;
-        return data.size();
+        return data.getValue().size();
     }
 
     public void sumarpuntuacions(){
         boolean trobat;
-        for (int x=0;x<data.size() ;x++){
+        for (int x=0;x<getItemCount() ;x++){
             trobat=false;
-            for (int y=0; y<sumatotal.size() && !trobat ;y++){
-               if(data.get(x).user.equals(sumatotal.get(y).user)){
-                    sumatotal.get(y).points+=data.get(x).points;
+            for (int y=0; y<sumatotal.getValue().size() && !trobat ;y++){
+                String a=data.getValue().get(x).user;
+                String b=sumatotal.getValue().get(y).user;
+               if(a.equals(b)){
+                    sumatotal.getValue().get(y).points+=data.getValue().get(x).points;
                     trobat=true;
                 }
             }
 
             if(!trobat){
-                sumatotal.add(new Partida(data.get(x).user,data.get(x).points));
+                sumatotal.getValue().add(new Partida(data.getValue().get(x).user,data.getValue().get(x).points));
             }
         }
     }
