@@ -14,14 +14,16 @@ import java.util.List;
 
 public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.ViewHolder> {
 
-    private List<User> data = Collections.emptyList();
+    private List<Partida> data = Collections.emptyList();
+    private List<Partida> sumatotal = Collections.emptyList();
     ArrayList<User> userList;
 
     public TopUsersAdapters() {
     }
 
-    public void setUsers(List<User> data) {
+    public void setUsers(List<Partida> data) {
         this.data = data;
+        sumarpuntuacions();
         notifyDataSetChanged();
     }
 
@@ -35,9 +37,10 @@ public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.View
 
     @Override
     public void onBindViewHolder(@NonNull TopUsersAdapters.ViewHolder holder, int position) {
-        User currentUser = data.get(position);
-        holder.id.setText(currentUser.id + "");
-        holder.task.setText(currentUser.name);
+        Partida currentPartida = sumatotal.get(position);
+        holder.user.setText(currentPartida.user + "");
+        holder.points.setText(currentPartida.points + "");
+
     }
 
     @Override
@@ -46,14 +49,30 @@ public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.View
         return data.size();
     }
 
+    public void sumarpuntuacions(){
+        boolean trobat;
+        for (int x=0;x<data.size() ;x++){
+            trobat=false;
+            for (int y=0; y<sumatotal.size() && !trobat ;y++){
+               if(data.get(x).user.equals(sumatotal.get(y).user)){
+                    sumatotal.get(y).points+=data.get(x).points;
+                    trobat=true;
+                }
+            }
+
+            if(!trobat){
+                sumatotal.add(new Partida(data.get(x).user,data.get(x).points));
+            }
+        }
+    }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView id;
-        public TextView task;
+        public TextView user;
+        public TextView points;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            id = itemView.findViewById(R.id.User_id);
-            task = itemView.findViewById(R.id.User_task);
+            user = itemView.findViewById(R.id.Nombre);
+            points = itemView.findViewById(R.id.Points);
         }
     }
 }

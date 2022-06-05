@@ -20,9 +20,9 @@ import java.util.List;
 public class TopScores  extends AppCompatActivity {
     RecyclerView.LayoutManager linear_layoutManager = new LinearLayoutManager(this);
     RecyclerView.LayoutManager grid_layoutManager = new GridLayoutManager(this, 2);
-    UserViewModel viewModel;
+    PartidaViewModel viewModel;
 
-    private RecyclerView recyclerUsers;
+    private RecyclerView recyclerPartidas;
     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
     private TopUsersAdapters TopUserAdapter;
 
@@ -31,27 +31,27 @@ public class TopScores  extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.topscores);
         TopUserAdapter = new TopUsersAdapters();
-        recyclerUsers = findViewById(R.id.recyclertopusers);
-        recyclerUsers.setLayoutManager(layoutManager);
-        recyclerUsers.setAdapter(TopUserAdapter);
+        recyclerPartidas = findViewById(R.id.recyclertopusers);
+        recyclerPartidas.setLayoutManager(layoutManager);
+        recyclerPartidas.setAdapter(TopUserAdapter);
 
 
         //crea instancia del ViewModel per accedir a les dades del llistat.
         //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
-        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        viewModel = new ViewModelProvider(this).get(PartidaViewModel.class);
         //Observe es una funció de LiveData, que ens permet detectar quan
         // les dades s'han modificat.
-        viewModel.getAllUsers().observe(this, new Observer<List<User>>() {
+        viewModel.getAllPartidas().observe(this, new Observer<List<Partida>>() {
             @Override
-            public void onChanged(List<User> Users) {
+            public void onChanged(List<Partida> partidas) {
                 //onChanged s'executa quan el llistat es modifica a la bbdd.
                 //Si afegiu una tasca, veureu que s'executa aquest codi per
                 //actualitzar el llistat (adapter)
-                TopUserAdapter.setUsers(Users);
+                TopUserAdapter.setUsers(partidas);
             }
         });
 
-        recyclerUsers.setAdapter(TopUserAdapter);
+        recyclerPartidas.setAdapter(TopUserAdapter);
 
 
 
@@ -63,11 +63,11 @@ public class TopScores  extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
         {
-            recyclerUsers.setLayoutManager(linear_layoutManager);
+            recyclerPartidas.setLayoutManager(linear_layoutManager);
         }
         else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
         {
-            recyclerUsers.setLayoutManager(grid_layoutManager);
+            recyclerPartidas.setLayoutManager(grid_layoutManager);
         }
     }
 

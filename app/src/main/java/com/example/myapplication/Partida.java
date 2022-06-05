@@ -10,6 +10,11 @@ public class Partida {
     public Partida() {
     }
 
+    public Partida(String user, String points) {
+        this.user=user;
+        this.points=points;
+    }
+
 
     @PrimaryKey(autoGenerate = true)
     public int id;
