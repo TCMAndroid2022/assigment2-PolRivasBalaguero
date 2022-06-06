@@ -116,11 +116,9 @@ public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.View
         for (int x=0;x<data.size() ;x++){
             trobat=false;
             for (int y=0; y<sumatotal.size() && !trobat ;y++){
-
                if(data.get(x).user.equals(sumatotal.get(y).user)){
                     int total= Integer.parseInt(sumatotal.get(y).points);
                     int nou = Integer.parseInt(data.get(x).points);
-                    System.out.println(data.get((x)).user + " TROBAT");
                     sumatotal.get(y).points=Integer.toString(total+nou);
                     trobat=true;
                 }
@@ -128,7 +126,6 @@ public class TopUsersAdapters extends RecyclerView.Adapter<TopUsersAdapters.View
 
             if(!trobat){
                 sumatotal.add(new Partida(data.get(x).user,data.get(x).points));
-                System.out.println(data.get((x)).user +" NOU");
 
             }
         }

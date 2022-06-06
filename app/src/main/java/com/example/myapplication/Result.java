@@ -49,8 +49,9 @@ public class Result extends AppCompatActivity {
         }
 
         puntuacion.setText("Puntuacio: "+ puntacio);
-
-        viewModel.insert(username,Integer.toString(puntacio));
+        if (username !=null ){
+            viewModel.insert(username,Integer.toString(puntacio));
+        }
 
 
         TVrespostauser.setText(resposta);

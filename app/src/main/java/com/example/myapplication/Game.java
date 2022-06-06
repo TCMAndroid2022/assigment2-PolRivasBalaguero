@@ -46,15 +46,18 @@ public class Game extends AppCompatActivity {
             public void onClick(View v) {
 
                 String resp= String.valueOf(lletra.getText());
-                for(int i = 0; i < paraula.length; i++){
-                    if(Character.toUpperCase(paraula[i]) == Character.toUpperCase(resp.charAt(0))){
-                        tusRespuestas[i] = paraula[i];
+                if (resp.length()!=0 ){
+                    for(int i = 0; i < paraula.length; i++){
+                        if(Character.toUpperCase(paraula[i]) == Character.toUpperCase(resp.charAt(0))){
+                            tusRespuestas[i] = paraula[i];
+                        }
                     }
+                    lletresintroducides++;
+                    mostrarparaula();
                 }
 
-                lletresintroducides++;
 
-                mostrarparaula();
+
 
             }
         });
