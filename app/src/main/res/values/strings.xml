@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Practica 2</string>
+    <string name="Tornar_al_menu">Back to menu</string>
+    <string name="Intentar">Try</string>
+    <string name="Resolver">"Resolve "</string>
+    <string name="addUser">addUser </string>
+    <string name="Jugar">Play</string>
+
 
 </resources>

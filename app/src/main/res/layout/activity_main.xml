@@ -19,13 +19,13 @@
         android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="User" />
+        android:text="@string/addUser" />
 
     <Button
         android:id="@+id/jugar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jugar" />
+        android:text="@string/Jugar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collection_view"
