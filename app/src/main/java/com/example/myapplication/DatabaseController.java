@@ -17,6 +17,7 @@ public class DatabaseController {
     private  PartidaDAO partidaDAO;
     private LiveData<List<Partida>>allPartidas;
 
+
     public DatabaseController(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         Userdao = db.Userdao();
@@ -29,9 +30,13 @@ public class DatabaseController {
     public LiveData<List<User>> fetchAll() {
         return allUsers;
     }
+    public LiveData<List<Partida>> getAllPartidabyusername(String username){
+        return partidaDAO.getPartidasUsername(username);
+    }
     public LiveData<List<Partida>> fetch() {
         return allPartidas;
     }
+
 
     public void setUser(String name) {
 

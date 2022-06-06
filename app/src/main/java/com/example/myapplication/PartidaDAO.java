@@ -11,8 +11,8 @@ import java.util.List;
 public interface PartidaDAO {
     @Query("SELECT * FROM  Partida")
     LiveData<List<Partida>> getAll();
-    @Query("SELECT POINTS FROM Partida WHERE username LIKE :username")
-    String getPoints(String username);
+    @Query("SELECT * FROM Partida WHERE username LIKE :username")
+    LiveData<List<Partida>> getPartidasUsername(String username);
     @Query("SELECT MAX(POINTS)FROM Partida WHERE username IS :username")
     String getMaxPoints(String username);
     @Insert(onConflict = OnConflictStrategy.ABORT)

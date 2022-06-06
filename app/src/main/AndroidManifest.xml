@@ -37,10 +37,9 @@
             android:exported="false">
         </activity>
         <activity
-            android:name=".Users_Info"
+            android:name=".Allgamesbyuser"
             android:exported="false">
         </activity>
-
 
     </application>
 

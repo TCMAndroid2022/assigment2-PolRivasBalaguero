@@ -17,7 +17,6 @@ public class Result extends AppCompatActivity {
 
     String resultat,resposta,username;
     TextView TVresultat, respostacorrecta,puntuacion,TVrespostauser;
-    DatabaseController dbcontroler;
     Button tornar;
     int puntacio;
     PartidaViewModel viewModel;
@@ -29,7 +28,7 @@ public class Result extends AppCompatActivity {
         resultat=getIntent().getStringExtra("paraula");
         resposta=getIntent().getStringExtra("resposta");
         puntacio=getIntent().getIntExtra("puntuacio",0);
-        username=getIntent().getStringExtra("username");// <-----------------GUARDAR EN BBDD
+        username=getIntent().getStringExtra("username");
         puntuacion= findViewById(R.id.puntuacion);
         TVresultat= findViewById(R.id.resultat);
         respostacorrecta= findViewById(R.id.paraulares);

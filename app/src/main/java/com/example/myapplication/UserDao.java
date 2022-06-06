@@ -12,8 +12,6 @@ import java.util.List;
 public interface UserDao {
     @Query("SELECT * FROM User")
     LiveData<List<User>> getAll();
-    //OnConflictStrategy s'ulitza en cas de que la PK ja existeix.
-    //No es necesari.
     @Insert(onConflict = OnConflictStrategy.ABORT)
     void insertUser(User element);
 }

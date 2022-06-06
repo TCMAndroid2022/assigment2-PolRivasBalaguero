@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         private Button addButton;
         private RecyclerView recyclerUsers;
         private UserAdapter UserAdapter;
-        ArrayList<User> listaUsers= new ArrayList<User>();
          Button jugar;
         UserViewModel viewModel;
         String paraula,username;
@@ -60,17 +59,12 @@ public class MainActivity extends AppCompatActivity {
             recyclerUsers.setLayoutManager(layoutManager);
             UserAdapter = new UserAdapter();
 
-            //crea instancia del ViewModel per accedir a les dades del llistat.
-            //ViewModel ens permet desvincular la vista (Activity) de la font de dades.
+
             viewModel = new ViewModelProvider(this).get(UserViewModel.class);
-            //Observe es una funció de LiveData, que ens permet detectar quan
-            // les dades s'han modificat.
+
             viewModel.getAllUsers().observe(this, new Observer<List<User>>() {
                 @Override
                 public void onChanged(List<User> Users) {
-                    //onChanged s'executa quan el llistat es modifica a la bbdd.
-                    //Si afegiu una tasca, veureu que s'executa aquest codi per
-                    //actualitzar el llistat (adapter)
 
                     UserAdapter.setUsers(Users);
                 }
@@ -82,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Afegim a través del viewmodel
                     username=(UserText.getText().toString());
                     viewModel.insert(username);
                 }
