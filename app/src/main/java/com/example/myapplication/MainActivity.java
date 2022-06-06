@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,18 +27,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
         private EditText UserText;
@@ -88,9 +83,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            queue = Volley.newRequestQueue(this);
-            jsonParse();
 
+            queue = Volley.newRequestQueue(this);
+
+            StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    paraula=response.toString();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("error",error.toString());
+                }
+            });
+            queue.add(request);
             jugar = findViewById(R.id.jugar);
 
             jugar.setOnClickListener(new View.OnClickListener() {
@@ -141,24 +148,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-    private void jsonParse() {
 
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL, null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            paraula = response.toString();
-                            Toast.makeText(MainActivity.this,response.toString(),Toast.LENGTH_LONG).show();
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.v("TEST", error.getMessage());
-                }
-            });
-            queue.add(jsonObjectRequest);
-        }
 
     }
 
